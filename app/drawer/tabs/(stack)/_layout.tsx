@@ -1,49 +1,64 @@
-import { View, Text, Pressable } from "react-native";
-import React from "react";
+import { Ionicons } from "@expo/vector-icons";
+import { DrawerActions, StackActions } from "@react-navigation/native";
 import { Stack, useNavigation } from "expo-router";
-import { DrawerActions } from "@react-navigation/native";
-import { FontAwesome } from "@expo/vector-icons";
-
-export default function StackLayout() {
+import { Button, Text } from "react-native";
+const StackLayout = () => {
   const navigation = useNavigation();
 
-  const onToggleDrawer = () => {
-    console.log("toggle drawer");
+  const onHeaderLeftClick = (canGoBack: boolean) => {
+    if (canGoBack) {
+      navigation.dispatch(StackActions.pop());
+      return;
+    }
+
+    navigation.dispatch(DrawerActions.toggleDrawer);
   };
 
   return (
     <Stack
       screenOptions={{
-        headerShown: true,
+        // headerShown: false,
         headerShadowVisible: false,
         contentStyle: {
           backgroundColor: "white",
         },
         headerLeft: ({ tintColor, canGoBack }) => (
-          <Pressable
-            onPress={() => console.log("hola")}
-            style={{ marginLeft: 10 }}
-            className="flex justify-center items-center relative z-50"
-          >
-            <Text>Menu</Text>
-          </Pressable>
+          <Ionicons
+            name="menu"
+            size={20}
+            color="black"
+            className="mr-5"
+            onPress={() => onHeaderLeftClick(canGoBack)}
+          />
         ),
       }}
     >
-      <Stack.Screen name="home/index" options={{ title: "home Screen" }} />
       <Stack.Screen
-        name="products/index"
-        options={{ title: "Productos Screen" }}
+        name="home/index"
+        options={{
+          title: "Inicio",
+        }}
       />
       <Stack.Screen
-        name="profile/index"
-        options={{ title: "Perfil Screen", animation: "slide_from_bottom" }}
+        name="products/index"
+        options={{
+          title: "Productos",
+        }}
       />
 
       <Stack.Screen
+        name="profile/index"
+        options={{
+          title: "Perfil",
+        }}
+      />
+      <Stack.Screen
         name="settings/index"
-        options={{ title: "Ajustes Screen" }}
+        options={{
+          title: "Ajustes Pantalla",
+        }}
       />
     </Stack>
   );
-}
+};
+export default StackLayout;
