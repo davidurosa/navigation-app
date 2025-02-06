@@ -1,5 +1,6 @@
 import { View, Text } from "react-native";
 import { Slot, SplashScreen, Stack } from "expo-router";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 // Import your global CSS file
 import "./global.css";
@@ -29,6 +30,10 @@ export default function RootLayout() {
     return null;
   }
 
-  return <Slot />;
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Slot />
+    </GestureHandlerRootView>
+  );
   /* return <Stack />; */
 }

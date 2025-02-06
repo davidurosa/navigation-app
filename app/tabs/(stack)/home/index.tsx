@@ -10,7 +10,7 @@ export default function HomeScreen() {
         <CustomButton
           className="mt-2"
           color="primary"
-          onPress={() => router.push("/products")}
+          onPress={() => router.push("/tabs/(stack)/products")}
         >
           Productos
         </CustomButton>
@@ -18,7 +18,7 @@ export default function HomeScreen() {
         <CustomButton
           className="mt-2"
           color="secondary"
-          onPress={() => router.push("/profile")}
+          onPress={() => router.push("/tabs/(stack)/profile")}
           variant="outlined"
         >
           Profile
@@ -26,7 +26,7 @@ export default function HomeScreen() {
         <CustomButton
           className="mt-2"
           color="tertiary"
-          onPress={() => router.push("/settings")}
+          onPress={() => router.push("/tabs/(stack)/settings")}
         >
           Settings
         </CustomButton>
