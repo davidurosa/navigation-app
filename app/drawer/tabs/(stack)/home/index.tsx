@@ -1,6 +1,6 @@
 import { View, Text, SafeAreaView } from "react-native";
 import React from "react";
-import { Link, router } from "expo-router";
+import { Link, router, useNavigation } from "expo-router";
 import { CustomButton } from "@/components/shared/CustomButton";
 
 export default function HomeScreen() {
@@ -10,7 +10,7 @@ export default function HomeScreen() {
         <CustomButton
           className="mt-2"
           color="primary"
-          onPress={() => router.push("/tabs/(stack)/products")}
+          onPress={() => router.push("/drawer/tabs/(stack)/products")}
         >
           Productos
         </CustomButton>
@@ -18,7 +18,7 @@ export default function HomeScreen() {
         <CustomButton
           className="mt-2"
           color="secondary"
-          onPress={() => router.push("/tabs/(stack)/profile")}
+          onPress={() => router.push("/drawer/tabs/(stack)/profile")}
           variant="outlined"
         >
           Profile
@@ -26,7 +26,7 @@ export default function HomeScreen() {
         <CustomButton
           className="mt-2"
           color="tertiary"
-          onPress={() => router.push("/tabs/(stack)/settings")}
+          onPress={() => router.push("/drawer/tabs/(stack)/settings")}
         >
           Settings
         </CustomButton>

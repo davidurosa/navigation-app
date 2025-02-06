@@ -1,8 +1,16 @@
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import React from "react";
-import { Stack } from "expo-router";
+import { Stack, useNavigation } from "expo-router";
+import { DrawerActions } from "@react-navigation/native";
+import { FontAwesome } from "@expo/vector-icons";
 
 export default function StackLayout() {
+  const navigation = useNavigation();
+
+  const onToggleDrawer = () => {
+    console.log("toggle drawer");
+  };
+
   return (
     <Stack
       screenOptions={{
@@ -11,6 +19,15 @@ export default function StackLayout() {
         contentStyle: {
           backgroundColor: "white",
         },
+        headerLeft: ({ tintColor, canGoBack }) => (
+          <Pressable
+            onPress={() => console.log("hola")}
+            style={{ marginLeft: 10 }}
+            className="flex justify-center items-center relative z-50"
+          >
+            <Text>Menu</Text>
+          </Pressable>
+        ),
       }}
     >
       <Stack.Screen name="home/index" options={{ title: "home Screen" }} />

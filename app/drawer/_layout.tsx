@@ -15,6 +15,18 @@ export default function DrawerLayout() {
       }}
     >
       <Drawer.Screen
+        name="tabs" // This is the name of the page and must match the url from root
+        options={{
+          headerShown: false,
+          drawerLabel: "Tabs + Stack",
+          title: "Tabs + Stack",
+          drawerIcon: ({ color, size }) => (
+            <FontAwesome size={size} name="tag" color={color} />
+          ),
+        }}
+      />
+
+      <Drawer.Screen
         name="schedule/index" // This is the name of the page and must match the url from root
         options={{
           drawerLabel: "Horario",
